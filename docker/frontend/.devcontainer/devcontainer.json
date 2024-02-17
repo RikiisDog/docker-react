@@ -35,7 +35,7 @@
                 // ファイル保存時、同時に行われるアクション
                 "editor.codeActionsOnSave": {
                     // ESLintのチェックを走らせる
-                    "source.fixAll.eslint": true
+                    "source.fixAll.eslint": "explicit"
                 },
                 // 入力時、コードを自動的に整形をする
                 "editor.formatOnType": true,
