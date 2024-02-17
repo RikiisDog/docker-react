@@ -12,10 +12,9 @@ services:
     tty: true
     volumes:
       - ./frontend:/home/node/app
-      - node-modules:/home/node/app/node_modules
+      - node_modules:/home/node/app/node_modules
     ports:
       - 5173:5173
       - 3000:3000
 volumes:
   node_modules:
-    name: my-node-modules
