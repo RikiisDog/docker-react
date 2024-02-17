@@ -1,0 +1,21 @@
+version: '3.9'
+services:
+  frontend:
+    container_name: react
+    build:
+      args:
+        - NODE_VER=20.11.0
+      context: ./docker/frontend
+      dockerfile: Dockerfile
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    tty: true
+    volumes:
+      - ./frontend:/home/node/app
+      - my-node-modules:/home/node/app/node_modules
+    ports:
+      - 5173:5173
+      - 3000:3000
+volumes:
+  node_modules:
+    name: my-node-modules
