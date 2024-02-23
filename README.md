@@ -1,33 +1,31 @@
-#### アプリの設定
-##### 1. アプリのひな型作成(全てコンテナ内で完結させるため、結構パワープレイ)
-1. 下記コマンドを実行し、アプリのひな型を作成する
-※コマンド実行後、temp/内にpackage.json、package-lock.json、src/、public/、node_modules/ができる
+# アプリの設定
+### 1. アプリのひな型作成(全てコンテナ内で完結させるため、結構パワープレイ)
+##### 1. 下記コマンドを実行し、アプリのひな型を作成する
 `npx create-react-app ./temp`
 
-2. 下記コマンドを実行し、カレントディレクトリにすべて移動させる(名前付きボリューム内にtemp/node_modulesのファイルを全て統合)
-`mv temp/node_modules/* ./node_modules/ && rm -rf temp/node_modules/`
-`mv temp/* ./ && rm -rf temp/`
+##### 2. 下記コマンドを実行し、カレントディレクトリにすべて移動させる
+`mv temp/node_modules/* ./node_modules/ && rm -rf temp/node_modules/`\
+`mv temp/* ./ && rm -rf temp/`\
 ※正直ここまでやるなら、Dockerfile内でcreate-react-appしたほうがいい気がしなくもないが、いい案が見つからない
 
-##### 2. ホットリロードを有効にする
-1. package.jsonのscriptsプロパティ内のstartコマンドを下記のように変更する
+### 2. ホットリロードを有効にする
+##### 1. package.jsonのscriptsプロパティ内のstartコマンドを下記のように変更する
 `"start": "WATCHPACK_POLLING=true react-scripts start",`
 
-2. package.jsonのscriptsプロパティ内のtestコマンドを下記のように変更する
+##### 2. package.jsonのscriptsプロパティ内のtestコマンドを下記のように変更する
 `"test": "WATCHPACK_POLLING=true npx cross-env PORT=3001 react-scripts test",`
 
-3. 下記コマンドでReactアプリケーションを起動すると、ホットリロードが効くようになる
-`npm run start` もしくは `npm start`
+##### 3. 下記コマンドでReactアプリケーションを起動すると、ホットリロードが効くようになる
+`npm start`
 
-4. 下記コマンドでテストを実行すると、テストコードに対してホットリロードが効くようになる
-`npm run test` もしくは `npm test`
----
+##### 4. 下記コマンドでテストを実行すると、テストコードに対してホットリロードが効くようになる
+`npm test`
 
-#### ESLintとPrettierのインストール
+***
+
+# ESLintとPrettierのインストール
 ##### 1. ESLintとPrettierのインストール
 `npm i -D eslint prettier eslint-config-prettier`
-※eslint-config-prettierは、prettier が整形したコードに対して ESLint がエラーを出力しないようにするプラグイン
-※eslint-plugin-prettierは、非推奨となっているため使用しない
 
 ##### 2. ESLintの初期化
 ```npx eslint --init```
@@ -66,12 +64,27 @@
 
 
 ##### 4. ESLintの設定
-1. .eslintrc.jsonのextendsの最後の要素に、"prettier"を追記し、下記のようにする
-```"extends": ["eslint:recommended", "plugin:react/recommended", "prettier"]```
-2. .eslintrc.jsonのrulesに下記を追記
-```"react/react-in-jsx-scope": "off"```
-3. .eslintignoreを作成
-4. 下記のように記述
+1. .eslintrc.jsonを下記のようにする
+    ```
+    {
+        "env": {
+            "browser": true,
+            "es2021": true
+        },
+        "extends": ["eslint:recommended", "plugin:react/recommended", "prettier"],
+        "parserOptions": {
+            "ecmaVersion": "latest",
+            "sourceType": "module"
+        },
+        "plugins": ["react"],
+        "rules": {
+            "react/react-in-jsx-scope": "off",
+            "react/prop-types": "off"
+        }
+    }
+    ```
+2. .eslintignoreを作成
+3. 下記のように記述
     ```
     build/
     public/
