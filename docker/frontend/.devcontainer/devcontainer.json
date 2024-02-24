@@ -14,38 +14,22 @@
                 "oderwat.indent-rainbow"
             ],
             "settings": {
-                // ファイルのエンコーディングをUTF-8にする
                 "files.encoding": "utf8",
-                // 改行コードをLFにする
                 "files.eol": "\n",
-                // インデントの自動検出を無効にする
                 "editor.detectIndentation": false,
-                // 半角スペースとTABを画面上に可視化する
                 "editor.renderWhitespace": "boundary",
-                // インデント時にタブではなくスペースを使用する
                 "editor.insertSpaces": true,
-                // ファイル保存時、コードを整形する
                 "editor.formatOnSave": true,
-                // ファイル保存時、最終行に改行を挿入する
                 "files.insertFinalNewline": true,
-                // ファイル保存時、最終行以降の空行を削除する
                 "files.trimFinalNewlines": true,
-                // ファイル保存時、末尾の空白をトリミングする
                 "files.trimTrailingWhitespace": true,
-                // ファイル保存時、同時に行われるアクション
                 "editor.codeActionsOnSave": {
-                    // ESLintのチェックを走らせる
                     "source.fixAll.eslint": "explicit"
                 },
-                // 入力時、コードを自動的に整形をする
                 "editor.formatOnType": true,
-                // ペースト時、コードを自動的に整形をする
                 "editor.formatOnPaste": true,
-                // デフォルトのフォーマッターをPrettierにする
                 "editor.defaultFormatter": "esbenp.prettier-vscode",
-                // emmetをTABキーで実行
                 "emmet.triggerExpansionOnTab": true,
-                // emmetをJSX,TSX内でも使用可能にする
                 "emmet.includeLanguages": {
                         "javascript": "javascriptreact",
                         "typescript": "typescriptreact"
