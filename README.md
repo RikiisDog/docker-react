@@ -1,11 +1,13 @@
 # アプリの設定
 ### 1. アプリのひな型作成(全てコンテナ内で完結させるため、結構パワープレイ)
 ##### 1. 下記コマンドを実行し、アプリのひな型を作成する
-`npx create-react-app ./temp`
+`npx create-react-app ./project`\
+※TypeScriptの場合は下記コマンド\
+`npx create-react-app ./project --template typescript`
 
 ##### 2. 下記コマンドを実行し、カレントディレクトリにすべて移動させる
-`mv temp/node_modules/* ./node_modules/ && rm -rf temp/node_modules/`\
-`mv temp/* ./ && rm -rf temp/`\
+`mv project/node_modules/* ./node_modules/ && rm -rf project/node_modules/`\
+`mv project/* ./ && rm -rf project/`\
 ※正直ここまでやるなら、Dockerfile内でcreate-react-appしたほうがいい気がしなくもないが、いい案が見つからない
 
 ### 2. ホットリロードを有効にする
